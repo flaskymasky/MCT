@@ -1,0 +1,48 @@
+
+
+#define MTK "1347830"
+#define LED1 PE5
+
+#define ONE ".----"
+#define TWO "..---"
+#define THREE "...--"
+#define FOUR "....-"
+#define FIVE "....."
+#define SIX "-...."
+#define SEVEN "--..."
+#define EIGHT "---"
+#define NINE "----."
+#define ZERO "-----"
+
+
+void morse(const char** str)
+{
+  for (int y = 0; y  < 5; ++y) {
+    for (int x = 0; x < 5; ++x) {
+      if (str[y][x] == '.') {
+        digitalWrite(LED1, LOW);
+        delay(100);
+        digitalWrite(LED1, HIGH);
+      } else {
+        digitalWrite(LED1, LOW);
+        delay(400);
+        digitalWrite(LED1, HIGH);
+      }
+      delay(600);
+    }
+  }
+}
+
+void setup()
+{
+  pinMode(LED1, OUTPUT);
+  digitalWrite(LED1, HIGH);
+
+  const char *m_nr[5] = { "ONE", "THREE", "FOUR", "SEVEN", "EIGHT", "THREE", "ZERO" };
+}
+
+void loop()
+{
+  
+  morse(m_nr);
+}
